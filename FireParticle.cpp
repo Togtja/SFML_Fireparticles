@@ -37,8 +37,6 @@ bool isInside(sf::Vector2f center,
 FireParticle::FireParticle(sf::Vector2f circle, float radi, sf::Vector2f dir, float speed,
                            float minLife, float maxLife ,float maxrot, 
                            float minsize, float maxsize, int pointCount) {
-    //Set the colors
-    //yellow = 
     this->speed = speed;
     //find random size between min and max;
     float size = std::uniform_real_distribution<float>(minsize, maxsize)(gen);
@@ -56,7 +54,8 @@ FireParticle::FireParticle(sf::Vector2f circle, float radi, sf::Vector2f dir, fl
     float x, y;
     x = std::uniform_real_distribution<float>(0, radi)(gen);
     y = std::uniform_real_distribution<float>(0, radi)(gen);
-        //then find a random deviation from 0 to rotdev an apply it to dir}
+    
+    //then find a random deviation from 0 to rotdev an apply it to dir}
     float rotDev = std::uniform_real_distribution<float>(-maxrot, maxrot)(gen);
 
     //Normilize the direction

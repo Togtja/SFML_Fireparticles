@@ -53,5 +53,5 @@ public:
         return events;
     }
     EventManagerSingleton(EventManagerSingleton const&) = delete;
-    void operator = (EventManagerSingleton const&) = delete;
+    void operator= (EventManagerSingleton const&) = delete;
 };
