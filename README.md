@@ -11,3 +11,6 @@ You can easily change the shape
 
 You can also change things such as spread and speed and life time. You can't change the colour, but that's not a difficult to change  
 ![](Spew.gif) 
+
+The most "realistic" fire my system can produce  
+![](RealishFire.gif)
