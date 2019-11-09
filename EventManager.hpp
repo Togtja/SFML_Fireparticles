@@ -6,23 +6,34 @@
 
 enum EventID {
     BasicEvent,
-    Death
+    Death,
+    Crackle
 };
 
 struct Event {
     std::string name; // Eventuelt en ENUM eller annen identifier
     EventID id;
     Event() {
-        id == EventID::BasicEvent;
+        id = EventID::BasicEvent;
     }
 };
 
 struct DeathEvent : Event {
     FireParticle& deadFire;
-    DeathEvent(FireParticle& fire) :  deadFire(fire) {}
+    DeathEvent(FireParticle& fire) :  deadFire(fire) {
+        id = EventID::Death;
+    }
 
 };
-
+struct CrackleEvent : Event {
+    float force;
+    sf::Vector2f pos;
+    CrackleEvent(sf::Vector2f p) {
+        id = EventID::Crackle;
+        force = 5.f;
+        pos = p;
+    }
+};
 
 class EventManagerSingleton {
 

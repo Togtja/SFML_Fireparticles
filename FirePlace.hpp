@@ -9,5 +9,6 @@ public:
     ~FirePlace();
     void draw();
     void createFire(FireParticle& pFire);
+    void crackle(sf::Vector2f pos, float force);
     std::vector<FireParticle*> GetFireParticles();
 };

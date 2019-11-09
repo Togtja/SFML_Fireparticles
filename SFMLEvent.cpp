@@ -28,16 +28,17 @@ int main() {
 
     while(window.isOpen()) {
         float dt = deltaClock.restart().asSeconds();
+        events.clear();
+
         sf::Event e;
         while(window.pollEvent(e)) {
             if(e.type == sf::Event::Closed) {
                 window.close();
             }
             if (e.type == sf::Event::MouseButtonPressed) {
-                for (auto& fire : firePlace.GetFireParticles()) {
-                    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
-                    fire->Crackle((sf::Vector2f)pixelPos, 5);
-                }
+                sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
+                CrackleEvent* crackleE = new CrackleEvent((sf::Vector2f)pixelPos);
+                EventManagerSingleton::getEventManager().addEvent(crackleE);
 
             }
         }
@@ -55,16 +56,16 @@ int main() {
             window.draw(fire->getParticle());
         }
         window.display();
-        
-        for (auto it = events.begin() ; it != events.end();) {
-            
-            if (it->get()->id == EventID::Death) {
-                DeathEvent* death = static_cast<DeathEvent*>(it->get());
+
+        for (auto& ev : events) {
+            if (ev->id == EventID::Death) {
+                DeathEvent* death = static_cast<DeathEvent*>(ev.get());
                 firePlace.createFire(death->deadFire);
-                it = events.erase(it);
             }
-            else {
-               it++;
+            else if(ev->id == EventID::Crackle) {
+                CrackleEvent* crackle = static_cast<CrackleEvent *>(ev.get());
+                firePlace.crackle(crackle->pos, crackle->force);
+
             }
         }
     } 
