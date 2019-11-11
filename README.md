@@ -14,3 +14,9 @@ You can also change things such as spread and speed and life time. You can't cha
 
 The most "realistic" fire my system can produce  
 ![](RealishFire.gif)
+
+## Dependecy
+
+To install from source you need:   
+SFML 2.5.1
+TGUI-0.8 (GUI for SFML) 
